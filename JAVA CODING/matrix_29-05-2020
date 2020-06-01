@@ -1,0 +1,72 @@
+public class Main
+{
+	public static int minimum(int a, int b, int c, int d)
+	{
+	return Integer.min(Integer.min(a, b), Integer.min(c, d));
+	}
+	public static int calculateSize(int grid[][])
+	{
+		int N = grid.length;
+		int[][] left = new int[N][N];
+		int[][] right = new int[N][N];
+		int[][] top = new int[N][N];
+		int[][] bottom = new int[N][N];
+		for (int i = 0; i < N; i++)
+		{
+			top[0][i] = grid[0][i];
+			bottom[N - 1][i] = grid[N - 1][i];
+
+			left[i][0] = grid[i][0];
+            right[i][N - 1] = grid[i][N - 1];
+		}
+
+			for (int i = 0; i < N; i++)
+		{
+			for (int j = 1; j < N; j++)
+			{
+		
+				if (grid[i][j] == 1)
+					left[i][j] = left[i][j - 1] + 1;
+
+			
+				if (grid[j][i] == 1)
+					top[j][i] = top[j - 1][i] + 1;
+
+		
+				if (grid[N - 1 - j][i] == 1)
+					bottom[N - 1 - j][i] = bottom[N - j][i] + 1;
+
+				if (grid[i][N - 1 - j] == 1)
+					right[i][N - 1 - j] = right[i][N - j] + 1;
+			}
+		}
+
+		int bar = 2;
+		for (int i = 0; i < N; i++)
+		{
+			for (int j = 0; j < N; j++)
+			{
+				int len = minimum(top[i][j], bottom[i][j], left[i][j], right[i][j]);
+				if (len - 1 > bar)
+					bar = len - 1;
+			}
+		}
+		return bar;
+	}
+
+	public static void main(String[] args)
+	{
+		int[][] grid =
+		{
+			{ 1, 0, 1, 0,1},
+			{ 0,1,1,0,1 },
+			{ 1, 1, 1, 1, 0 },
+			{0,0,1,0,0},
+			{ 1, 0, 1, 1, 1 },
+		};
+
+		int bar = calculateSize(grid);
+		if (bar != 0)
+			System.out.println("Largest Plus of 1's has size of " + (4*bar  ));
+	}
+}
