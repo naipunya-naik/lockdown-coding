@@ -4,30 +4,34 @@ using namespace std;
 class Swap
 {
 public:
-          int a,b;
-
-    Swap(int a, int b) 
-    { 
-        this->a = a; 
-        this->b = b; 
-    } 
-    friend void swap(Swap&);
+        int a,b;
+           void input() 
+	{
+	 cout << "Enter Two Numbers :";
+	 cin >> a >>b;
+	}
+          friend void swap(Swap& );
+          void display() 
+	{
+	 cout << "\nBefore Swapping: " << b<< " " <<a; 
+	 cout << "\nAfter Swapping: " << a << " " << b; 
+	}
 };
 // Define the swap function outside class scope 
 void swap(Swap& s1) 
 { 
-    cout << "\nBefore Swapping: " << s1.a << " " << s1.b; 
     {
          s1.b = s1.a + s1.b;
          s1.a = s1.b - s1.a;
          s1.b = s1.b - s1.a;
     }
-    cout << "\nAfter Swapping: " << s1.a << " " << s1.b; 
+    
 }
 int main()
 {
-   Swap s1(10, 20); 
-    swap(s1); 
-    return 0; 
-} 
-   
+  Swap s;
+    s.input();
+    swap(s);
+    s.display();
+    return 0;
+}
