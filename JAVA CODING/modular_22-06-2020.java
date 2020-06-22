@@ -19,7 +19,7 @@ public class modular {
 	{ 
 	    int x,y,p;
 	    Scanner scanner= new Scanner(System.in);
-        System.out.print("Enter x,y,p: ");
+        System.out.println("Enter x,y,p: ");
         int a = scanner.nextInt();
         int b = scanner.nextInt();
         int c = scanner.nextInt();
