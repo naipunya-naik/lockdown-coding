@@ -1,42 +1,44 @@
-#include<stdio.h>
-void main()
-{
-    int r,r2,c,c2,temp, rows = 3,columns = 3, a[rows][columns]; 
-    a[0][0] = 7;
-    a[0][1] = 8;
-    a[0][2] = 9;
-    a[1][0] = 4;
-    a[1][1] = 5;
-    a[1][2] = 6;
-    a[2][0] = 1;
-    a[2][1] = 2;
-    a[2][2] = 3;
-    r = 0;
-    r2 = rows-1;
-    c = 0;
-    c2 = columns-1; 
-    while(r<=r2)
-    {
-        while(c<=c2)
-        {
-            temp = a[r][c];
-            a[r][c] = a[r2][c2];
-            a[r2][c2] = temp;
-            c++;
-            c2--;
-        }
-         temp = a[r][c];
-        a[r][c] = a[r2][c2];
-        a[r2][c2] = temp;
-        r++;
-        r2--;
-    }
-    for(r=0;r<3;r++)
-    {
-        for(c=0;c<3;c++)
-        {
-            printf("%d\t",a[r][c]);
-        }
-        printf("\n");
-    }
-}
+#include <stdio.h> 
+#define M 3
+#define N 3
+void swap(int* , int* ); 
+void main() 
+{ 
+   int arr[M][N];
+   for (int i = 0; i < M; i++)
+      { 
+        for (int j = 0; j < N; j++) 
+           {
+                printf("enter the Each Element of the Matrix:-\n");
+                scanf("%d",&arr[i][j]); 
+           } 
+       
+      } 
+    for (int i = 0; i < M; i++) 
+    { 
+        int start = 0; 
+        int end = N - 1; 
+  
+        while (start < end)
+       { 
+        swap(&arr[i][start],&arr[i][end]); 
+        start++; 
+        end--; 
+       } 
+    }  
+  for (int i = 0; i < M; i++)
+      { 
+        for (int j = 0; j < N; j++) 
+           { 
+            printf("%d\t",arr[i][j]); 
+           } 
+       printf("\n"); 
+      }
+}   
+void swap(int* a, int* b) 
+{ 
+    int temp = *a; 
+    *a = *b; 
+    *b = temp; 
+} 
+  
