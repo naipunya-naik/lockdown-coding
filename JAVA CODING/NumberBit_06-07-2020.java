@@ -15,7 +15,7 @@ public class NumberBit
 	} 
 	public static void main(String[] args) 
 	{ 
-		int N = 15; 
+		int N = 4; 
 		findNthNum(N); 
 	} 
 	} 
